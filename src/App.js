@@ -8,7 +8,7 @@ class App extends Component {
         <h1>MineLookerForer</h1>
         <tr>
           <td>
-            <button class="grid-cell" />
+            <button class="cell" />
           </td>
         </tr>
       </div>

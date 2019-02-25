@@ -13,8 +13,12 @@ body {
   justify-content: center;
 }
 
-.grid-cell {
-  background-color: lightgrey;
-  height: 1rem;
-  width: 1rem;
+.cell {
+  background-color: grey;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-top: 0.1rem solid lightgray;
+  border-left: 0.1rem solid lightgray;
+  border-bottom: 0.1rem solid darkgray;
+  border-right: 0.1rem solid darkgray;
 }
