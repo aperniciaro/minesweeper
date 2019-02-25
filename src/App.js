@@ -49,9 +49,7 @@ class App extends Component {
               return (
                 <tr>
                   {row.map(column => {
-                    return (
-                      <Cell onClick={this.check} onContextMenu={this.flag} />
-                    )
+                    return <Cell check={this.check} flag={this.flag} />
                   })}
                 </tr>
               )
