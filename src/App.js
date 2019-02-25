@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
-import HelloWorld from './components/HelloWorld'
+// import HelloWorld from './components/HelloWorld'
 
 class App extends Component {
   render() {
-    return <HelloWorld />
+    return (
+      <div>
+        <h1>MineLookerForer</h1>
+        <tr>
+          <td>
+            <button class="grid-cell" />
+          </td>
+        </tr>
+      </div>
+    )
   }
 }
 
