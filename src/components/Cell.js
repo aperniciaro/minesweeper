@@ -4,7 +4,7 @@ class Cell extends Component {
   render() {
     return (
       <td>
-        <button class="cell" />
+        <button className="cell" />
       </td>
     )
   }
