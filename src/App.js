@@ -17,6 +17,28 @@ class App extends Component {
     })
   }
 
+  check = event => {
+    console.log('left click')
+    axios
+      .post('https://minesweeper-api.herokuapp.com/games/{id}/check')
+      .then(resp => {
+        this.setState({
+          gameBoard: resp.data.board
+        })
+      })
+  }
+
+  flag = event => {
+    console.log('right click')
+    axios
+      .post('https://minesweeper-api.herokuapp.com/games/{id}/flag')
+      .then(resp => {
+        this.setState({
+          gameBoard: resp.data.board
+        })
+      })
+  }
+
   render() {
     return (
       <>
@@ -27,7 +49,9 @@ class App extends Component {
               return (
                 <tr>
                   {row.map(column => {
-                    return <Cell />
+                    return (
+                      <Cell onClick={this.check} onContextMenu={this.flag} />
+                    )
                   })}
                 </tr>
               )
