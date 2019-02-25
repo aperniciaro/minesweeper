@@ -1,29 +1,40 @@
 import React, { Component } from 'react'
 import Cell from './components/Cell'
+import axios from 'axios'
 
 class App extends Component {
   state = {
-    difficulty: 0
+    difficulty: 0,
+    gameBoard: []
   }
 
-  createBoard = () => {
-    let board = []
-    for (let i = 0; i < (this.state.difficulty + 1) * 8; i++) {
-      let boardRow = []
-      for (let j = 0; j < (this.state.difficulty + 1) * 8; j++) {
-        boardRow.push(<Cell />)
-      }
-      board.push(<tr>{boardRow}</tr>)
-    }
-    return board
+  componentDidMount() {
+    axios.post('https://minesweeper-api.herokuapp.com/games').then(resp => {
+      console.log(resp)
+      this.setState({
+        gameBoard: resp.data.board
+      })
+    })
   }
 
   render() {
     return (
-      <div>
+      <>
         <h1>MineLookerForer</h1>
-        <table>{this.createBoard()}</table>
-      </div>
+        <table>
+          <tbody>
+            {this.state.gameBoard.map(row => {
+              return (
+                <tr>
+                  {row.map(column => {
+                    return <Cell />
+                  })}
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </>
     )
   }
 }
