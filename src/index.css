@@ -13,6 +13,10 @@ body {
   justify-content: center;
 }
 
+table {
+  border-spacing: 0;
+}
+
 .cell {
   background-color: grey;
   height: 1.5rem;
