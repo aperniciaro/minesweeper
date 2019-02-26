@@ -11,7 +11,6 @@ class App extends Component {
 
   componentDidMount() {
     axios.post('https://minesweeper-api.herokuapp.com/games').then(resp => {
-      console.log(resp)
       this.setState({
         gameBoard: resp.data.board,
         gameID: resp.data.id
@@ -30,9 +29,11 @@ class App extends Component {
           gameBoard: resp.data.board
         })
       })
+    console.log(this.state.gameBoard)
   }
 
   flag = event => {
+    event.preventDefault()
     console.log('right click')
     axios
       .post(
@@ -43,6 +44,7 @@ class App extends Component {
           gameBoard: resp.data.board
         })
       })
+    console.log(this.state.gameBoard)
   }
 
   render() {
