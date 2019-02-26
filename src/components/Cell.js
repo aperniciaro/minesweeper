@@ -5,9 +5,15 @@ class Cell extends Component {
     return (
       <td
         className="cell"
-        onClick={() => this.props.check(this.props.row, this.props.column)}
-        onContextMenu={() => this.props.flag(this.props.row, this.props.column)}
-      />
+        onClick={() =>
+          this.props.check(this.props.rowIndex, this.props.columnIndex)
+        }
+        onContextMenu={() =>
+          this.props.flag(this.props.rowIndex, this.props.columnIndex)
+        }
+      >
+        {this.props.column}
+      </td>
     )
   }
 }
