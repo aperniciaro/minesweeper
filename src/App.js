@@ -15,10 +15,11 @@ class App extends Component {
         gameBoard: resp.data.board,
         gameID: resp.data.id
       })
+      console.log(this.state.gameBoard)
     })
   }
 
-  check = event => {
+  check = (row, col) => {
     console.log('left click')
     axios
       .post(
@@ -32,8 +33,7 @@ class App extends Component {
     console.log(this.state.gameBoard)
   }
 
-  flag = event => {
-    event.preventDefault()
+  flag = (row, col) => {
     console.log('right click')
     axios
       .post(
@@ -53,11 +53,18 @@ class App extends Component {
         <h1>MineLookerForer</h1>
         <table>
           <tbody>
-            {this.state.gameBoard.map(row => {
+            {this.state.gameBoard.map((row, i) => {
               return (
                 <tr>
-                  {row.map(column => {
-                    return <Cell check={this.check} flag={this.flag} />
+                  {row.map((col, j) => {
+                    return (
+                      <Cell
+                        row={i}
+                        col={j}
+                        check={this.check}
+                        flag={this.flag}
+                      />
+                    )
                   })}
                 </tr>
               )
