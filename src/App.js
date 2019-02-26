@@ -19,8 +19,9 @@ class App extends Component {
     })
   }
 
-  check = (row, col) => {
+  check = event => {
     console.log('left click')
+    console.log()
     axios
       .post(
         `https://minesweeper-api.herokuapp.com/games/${this.state.gameID}/check`
@@ -33,8 +34,9 @@ class App extends Component {
     console.log(this.state.gameBoard)
   }
 
-  flag = (row, col) => {
+  flag = event => {
     console.log('right click')
+    // event.preventDefault()
     axios
       .post(
         `https://minesweeper-api.herokuapp.com/games/${this.state.gameID}/flag`
@@ -55,10 +57,11 @@ class App extends Component {
           <tbody>
             {this.state.gameBoard.map((row, i) => {
               return (
-                <tr>
+                <tr key={i}>
                   {row.map((col, j) => {
                     return (
                       <Cell
+                        key={j}
                         row={i}
                         col={j}
                         check={this.check}
