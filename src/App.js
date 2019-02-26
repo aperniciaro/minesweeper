@@ -39,7 +39,6 @@ class App extends Component {
           numberOfMines: resp.data.mines
         })
       })
-    console.log(this.state.gameBoard)
   }
 
   flag = (x, y) => {
@@ -55,7 +54,6 @@ class App extends Component {
           numberOfMines: resp.data.mines
         })
       })
-    console.log(this.state.gameBoard)
   }
 
   render() {
