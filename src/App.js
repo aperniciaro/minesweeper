@@ -41,7 +41,8 @@ class App extends Component {
       })
   }
 
-  flag = (x, y) => {
+  flag = (event, x, y) => {
+    event.preventDefault()
     axios
       .post(
         `https://minesweeper-api.herokuapp.com/games/${this.state.gameID}/flag`,

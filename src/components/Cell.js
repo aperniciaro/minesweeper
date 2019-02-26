@@ -8,8 +8,8 @@ class Cell extends Component {
         onClick={() =>
           this.props.check(this.props.rowIndex, this.props.columnIndex)
         }
-        onContextMenu={() =>
-          this.props.flag(this.props.rowIndex, this.props.columnIndex)
+        onContextMenu={event =>
+          this.props.flag(event, this.props.rowIndex, this.props.columnIndex)
         }
       >
         {this.props.column}
