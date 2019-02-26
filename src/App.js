@@ -4,46 +4,55 @@ import axios from 'axios'
 
 class App extends Component {
   state = {
-    difficulty: 0,
+    gameDifficulty: 0,
     gameBoard: [],
-    gameID: 0
+    gameID: 0,
+    gameState: '',
+    numberOfMines: 0
   }
 
   componentDidMount() {
-    axios.post('https://minesweeper-api.herokuapp.com/games').then(resp => {
-      this.setState({
-        gameBoard: resp.data.board,
-        gameID: resp.data.id
+    axios
+      .post('https://minesweeper-api.herokuapp.com/games', {
+        difficulty: this.state.gameDifficulty
       })
-      console.log(this.state.gameBoard)
-    })
+      .then(resp => {
+        this.setState({
+          gameBoard: resp.data.board,
+          gameID: resp.data.id
+        })
+      })
   }
 
-  check = event => {
-    console.log('left click')
-    console.log()
+  check = (x, y) => {
     axios
       .post(
-        `https://minesweeper-api.herokuapp.com/games/${this.state.gameID}/check`
+        `https://minesweeper-api.herokuapp.com/games/${
+          this.state.gameID
+        }/check`,
+        { id: this.state.gameID, row: x, col: y }
       )
       .then(resp => {
         this.setState({
-          gameBoard: resp.data.board
+          gameBoard: resp.data.board,
+          gameState: resp.data.state,
+          numberOfMines: resp.data.mines
         })
       })
     console.log(this.state.gameBoard)
   }
 
-  flag = event => {
-    console.log('right click')
-    // event.preventDefault()
+  flag = (x, y) => {
     axios
       .post(
-        `https://minesweeper-api.herokuapp.com/games/${this.state.gameID}/flag`
+        `https://minesweeper-api.herokuapp.com/games/${this.state.gameID}/flag`,
+        { id: this.state.gameID, row: x, col: y }
       )
       .then(resp => {
         this.setState({
-          gameBoard: resp.data.board
+          gameBoard: resp.data.board,
+          gameState: resp.data.state,
+          numberOfMines: resp.data.mines
         })
       })
     console.log(this.state.gameBoard)
@@ -55,19 +64,11 @@ class App extends Component {
         <h1>MineLookerForer</h1>
         <table>
           <tbody>
-            {this.state.gameBoard.map((row, i) => {
+            {this.state.gameBoard.map((row, x) => {
               return (
-                <tr key={i}>
-                  {row.map((col, j) => {
-                    return (
-                      <Cell
-                        key={j}
-                        row={i}
-                        col={j}
-                        check={this.check}
-                        flag={this.flag}
-                      />
-                    )
+                <tr key={x}>
+                  {row.map((col, y) => {
+                    return <Cell key={y} check={this.check} flag={this.flag} />
                   })}
                 </tr>
               )
