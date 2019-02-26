@@ -67,8 +67,16 @@ class App extends Component {
             {this.state.gameBoard.map((row, x) => {
               return (
                 <tr key={x}>
-                  {row.map((col, y) => {
-                    return <Cell key={y} check={this.check} flag={this.flag} />
+                  {row.map((column, y) => {
+                    return (
+                      <Cell
+                        key={y}
+                        row={x}
+                        column={y}
+                        check={this.check}
+                        flag={this.flag}
+                      />
+                    )
                   })}
                 </tr>
               )
