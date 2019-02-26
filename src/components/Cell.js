@@ -17,7 +17,16 @@ class Cell extends Component {
         </td>
       )
     } else {
-      return <td className="cell">{this.props.column}</td>
+      return (
+        <td
+          className="cell"
+          onContextMenu={event =>
+            this.props.flag(event, this.props.rowIndex, this.props.columnIndex)
+          }
+        >
+          {this.props.column}
+        </td>
+      )
     }
   }
 }
