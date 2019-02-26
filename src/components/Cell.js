@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class Cell extends Component {
   render() {
-    if (this.props.column != 'F') {
+    if (this.props.columnValue !== 'F') {
       return (
         <td
           className="cell"
@@ -13,7 +13,7 @@ class Cell extends Component {
             this.props.flag(event, this.props.rowIndex, this.props.columnIndex)
           }
         >
-          {this.props.column}
+          {this.props.columnValue}
         </td>
       )
     } else {
@@ -24,7 +24,7 @@ class Cell extends Component {
             this.props.flag(event, this.props.rowIndex, this.props.columnIndex)
           }
         >
-          {this.props.column}
+          {this.props.columnValue}
         </td>
       )
     }

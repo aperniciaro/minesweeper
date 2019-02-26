@@ -71,9 +71,9 @@ class App extends Component {
                       <Cell
                         key={y}
                         rowIndex={x}
-                        row={row}
+                        rowValue={row}
                         columnIndex={y}
-                        column={column}
+                        columnValue={column}
                         check={this.check}
                         flag={this.flag}
                       />
