@@ -5,14 +5,16 @@ import axios from 'axios'
 class App extends Component {
   state = {
     difficulty: 0,
-    gameBoard: []
+    gameBoard: [],
+    gameID: 0
   }
 
   componentDidMount() {
     axios.post('https://minesweeper-api.herokuapp.com/games').then(resp => {
       console.log(resp)
       this.setState({
-        gameBoard: resp.data.board
+        gameBoard: resp.data.board,
+        gameID: resp.data.id
       })
     })
   }
@@ -20,7 +22,9 @@ class App extends Component {
   check = event => {
     console.log('left click')
     axios
-      .post('https://minesweeper-api.herokuapp.com/games/{id}/check')
+      .post(
+        `https://minesweeper-api.herokuapp.com/games/${this.state.gameID}/check`
+      )
       .then(resp => {
         this.setState({
           gameBoard: resp.data.board
@@ -31,7 +35,9 @@ class App extends Component {
   flag = event => {
     console.log('right click')
     axios
-      .post('https://minesweeper-api.herokuapp.com/games/{id}/flag')
+      .post(
+        `https://minesweeper-api.herokuapp.com/games/${this.state.gameID}/flag`
+      )
       .then(resp => {
         this.setState({
           gameBoard: resp.data.board
