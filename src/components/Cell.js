@@ -13,6 +13,16 @@ class Cell extends Component {
             this.props.flag(event, this.props.rowIndex, this.props.columnIndex)
           }
         >
+          {/* {switch(this.props.columnValue)
+          {
+            case 'F': 🚩;
+            break;
+            case '*': 💣;
+            break;
+            case '@': ☠️;
+            break;
+            default: this.props.columnValue;
+          }} */}
           {this.props.columnValue}
         </td>
       )
