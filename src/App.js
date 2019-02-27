@@ -14,7 +14,22 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.resetGame()
+    this.resetGame(0)
+  }
+
+  resetGame = level => {
+    axios
+      .post('https://minesweeper-api.herokuapp.com/games', {
+        difficulty: level
+      })
+      .then(resp => {
+        this.setState({
+          gameBoard: resp.data.board,
+          gameID: resp.data.id,
+          gameDifficulty: level,
+          announcement: ''
+        })
+      })
   }
 
   check = (x, y) => {
@@ -59,25 +74,14 @@ class App extends Component {
       })
   }
 
-  resetGame = () => {
-    axios
-      .post('https://minesweeper-api.herokuapp.com/games', {
-        difficulty: this.state.gameDifficulty
-      })
-      .then(resp => {
-        this.setState({
-          gameBoard: resp.data.board,
-          gameID: resp.data.id
-        })
-      })
-  }
-
   render() {
     return (
       <>
         <Header
+          level={this.state.gamedifficulty}
           announcement={this.state.announcement}
           resetGame={this.resetGame}
+          difficulty={this.changeDifficulty}
         />
         <table>
           <tbody>

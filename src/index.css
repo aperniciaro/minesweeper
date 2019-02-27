@@ -27,12 +27,18 @@ h2 {
   text-align: center;
 }
 
+.difficulty-menu {
+  width: 10rem;
+  height: 1.5rem;
+}
+
 .reset-button {
   width: 5rem;
   height: 2rem;
   border-radius: 0.25rem;
   background-color: blue;
   color: white;
+  margin: 0.5rem;
 }
 
 table {
