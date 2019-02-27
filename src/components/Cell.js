@@ -23,7 +23,6 @@ class Cell extends Component {
       default:
         cellType = 'revealed-cell'
     }
-
     if (this.props.columnValue !== 'F') {
       return (
         <td

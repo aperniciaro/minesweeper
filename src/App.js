@@ -18,16 +18,22 @@ class App extends Component {
   }
 
   resetGame = event => {
-    const level = event ? event.target.value : 0
+    // const eventType = event.type
+    // if event && event.type == click
+    let _difficulty = this.state.gameDifficulty
+    if (event && event.type === 'change') {
+      _difficulty = event.target.value
+    }
+
     axios
       .post('https://minesweeper-api.herokuapp.com/games', {
-        difficulty: level
+        difficulty: _difficulty
       })
       .then(resp => {
         this.setState({
           gameBoard: resp.data.board,
           gameID: resp.data.id,
-          gameDifficulty: level,
+          gameDifficulty: _difficulty,
           announcement: ''
         })
       })
@@ -79,10 +85,8 @@ class App extends Component {
     return (
       <>
         <Header
-          level={this.state.gameDifficulty}
           announcement={this.state.announcement}
           resetGame={this.resetGame}
-          difficulty={this.changeDifficulty}
         />
         <table>
           <tbody>
