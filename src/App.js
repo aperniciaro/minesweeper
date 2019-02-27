@@ -14,16 +14,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios
-      .post('https://minesweeper-api.herokuapp.com/games', {
-        difficulty: this.state.gameDifficulty
-      })
-      .then(resp => {
-        this.setState({
-          gameBoard: resp.data.board,
-          gameID: resp.data.id
-        })
-      })
+    this.resetGame()
   }
 
   check = (x, y) => {
