@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Cell from './components/Cell'
 import Header from './components/Header'
+import Cell from './components/Cell'
 import axios from 'axios'
 
 class App extends Component {
@@ -14,10 +14,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.resetGame(0)
+    this.resetGame()
   }
 
-  resetGame = level => {
+  resetGame = event => {
+    const level = event ? event.target.value : 0
     axios
       .post('https://minesweeper-api.herokuapp.com/games', {
         difficulty: level
@@ -78,7 +79,7 @@ class App extends Component {
     return (
       <>
         <Header
-          level={this.state.gamedifficulty}
+          level={this.state.gameDifficulty}
           announcement={this.state.announcement}
           resetGame={this.resetGame}
           difficulty={this.changeDifficulty}
