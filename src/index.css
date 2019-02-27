@@ -13,6 +13,10 @@ body {
   justify-content: center;
 }
 
+h1 {
+  text-align: center;
+}
+
 table {
   border-spacing: 0;
 }
@@ -26,6 +30,15 @@ table {
   border-bottom: 0.1rem solid darkgray;
   border-right: 0.1rem solid darkgray;
   color: white;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.revealed-cell {
+  background-color: lightgrey;
+  border: 0.1rem solid gray;
+  height: 3rem;
+  width: 3rem;
   text-align: center;
   font-size: 2rem;
 }

@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 class Cell extends Component {
   render() {
     let picture = this.props.columnValue
+    let cellType = 'cell'
     switch (picture) {
       case 'F':
         picture = '🚩'
@@ -13,12 +14,20 @@ class Cell extends Component {
       case '@':
         picture = '👌'
         break
+      case '_':
+        picture = ''
+        cellType = 'revealed-cell'
+        break
+      case ' ':
+        break
+      default:
+        cellType = 'revealed-cell'
     }
 
     if (this.props.columnValue !== 'F') {
       return (
         <td
-          className="cell"
+          className={cellType}
           onClick={() =>
             this.props.check(this.props.rowIndex, this.props.columnIndex)
           }
