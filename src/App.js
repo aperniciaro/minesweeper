@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Cell from './components/Cell'
+import Header from './components/Header'
 import axios from 'axios'
 
 class App extends Component {
@@ -70,10 +71,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <h1>MineLookerForer</h1>
-        <section className="announcements">
-          <h2>{this.state.announcement}</h2>
-        </section>
+        <Header announcement={this.state.announcement} />
         <table>
           <tbody>
             {this.state.gameBoard.map((row, x) => {
