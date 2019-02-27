@@ -11,12 +11,24 @@ body {
   min-height: 100%;
   display: flex;
   justify-content: center;
+  background-image: url('./images/Minefield.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.game-area {
+  background-color: rgb(211, 211, 211, 0.75);
+  padding: 2rem;
+  margin: 4rem;
+  border-radius: 1rem;
 }
 
 header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'Special Elite', cursive;
 }
 
 h1 {
@@ -67,17 +79,4 @@ table {
   width: 1rem;
   text-align: center;
   font-size: 0.75rem;
-}
-
-@media (min-width: 700px) {
-  .cell {
-    height: 2rem;
-    width: 2rem;
-    font-size: 1.5rem;
-  }
-  .revealed-cell {
-    height: 2rem;
-    width: 2rem;
-    font-size: 1.5rem;
-  }
 }

@@ -82,7 +82,7 @@ class App extends Component {
 
   render() {
     return (
-      <div style={backgroundImage='url('./images/Minefield.jpg')'}>
+      <div className="game-area">
         <Header
           announcement={this.state.announcement}
           resetGame={this.resetGame}
