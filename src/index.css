@@ -19,11 +19,13 @@ table {
 
 .cell {
   background-color: grey;
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 3rem;
+  width: 3rem;
   border-top: 0.1rem solid lightgray;
   border-left: 0.1rem solid lightgray;
   border-bottom: 0.1rem solid darkgray;
   border-right: 0.1rem solid darkgray;
   color: white;
+  text-align: center;
+  font-size: 2rem;
 }

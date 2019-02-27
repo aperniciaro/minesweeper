@@ -2,6 +2,19 @@ import React, { Component } from 'react'
 
 class Cell extends Component {
   render() {
+    let picture = this.props.columnValue
+    switch (picture) {
+      case 'F':
+        picture = '🚩'
+        break
+      case '*':
+        picture = '💣'
+        break
+      case '@':
+        picture = '👌'
+        break
+    }
+
     if (this.props.columnValue !== 'F') {
       return (
         <td
@@ -13,17 +26,7 @@ class Cell extends Component {
             this.props.flag(event, this.props.rowIndex, this.props.columnIndex)
           }
         >
-          {/* {switch(this.props.columnValue)
-          {
-            case 'F': 🚩;
-            break;
-            case '*': 💣;
-            break;
-            case '@': ☠️;
-            break;
-            default: this.props.columnValue;
-          }} */}
-          {this.props.columnValue}
+          {picture}
         </td>
       )
     } else {
@@ -34,7 +37,7 @@ class Cell extends Component {
             this.props.flag(event, this.props.rowIndex, this.props.columnIndex)
           }
         >
-          {this.props.columnValue}
+          {picture}
         </td>
       )
     }
