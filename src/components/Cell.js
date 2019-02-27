@@ -41,7 +41,7 @@ class Cell extends Component {
     } else {
       return (
         <td
-          className="cell"
+          className={cellType}
           onContextMenu={event =>
             this.props.flag(event, this.props.rowIndex, this.props.columnIndex)
           }
