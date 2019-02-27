@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Header from './components/Header'
 import Cell from './components/Cell'
 import axios from 'axios'
+// import Minefield from './images/Minefield.jpg'
 
 class App extends Component {
   state = {
@@ -18,8 +19,6 @@ class App extends Component {
   }
 
   resetGame = event => {
-    // const eventType = event.type
-    // if event && event.type == click
     let _difficulty = this.state.gameDifficulty
     if (event && event.type === 'change') {
       _difficulty = event.target.value
@@ -83,7 +82,7 @@ class App extends Component {
 
   render() {
     return (
-      <>
+      <div style={backgroundImage='url('./images/Minefield.jpg')'}>
         <Header
           announcement={this.state.announcement}
           resetGame={this.resetGame}
@@ -111,7 +110,7 @@ class App extends Component {
             })}
           </tbody>
         </table>
-      </>
+      </div>
     )
   }
 }
