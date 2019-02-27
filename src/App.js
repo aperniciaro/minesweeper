@@ -8,7 +8,8 @@ class App extends Component {
     gameBoard: [],
     gameID: 0,
     gameState: '',
-    numberOfMines: 0
+    numberOfMines: 0,
+    announcement: ''
   }
 
   componentDidMount() {
@@ -33,11 +34,20 @@ class App extends Component {
         { id: this.state.gameID, row: x, col: y }
       )
       .then(resp => {
-        this.setState({
-          gameBoard: resp.data.board,
-          gameState: resp.data.state,
-          numberOfMines: resp.data.mines
-        })
+        this.setState(
+          {
+            gameBoard: resp.data.board,
+            gameState: resp.data.state,
+            numberOfMines: resp.data.mines
+          },
+          () => {
+            if (this.state.gameState === 'won') {
+              this.setState({ announcement: 'You Won 😃' })
+            } else if (this.state.gameState === 'lost') {
+              this.setState({ announcement: 'You Lost 😔' })
+            }
+          }
+        )
       })
   }
 
@@ -61,6 +71,9 @@ class App extends Component {
     return (
       <>
         <h1>MineLookerForer</h1>
+        <section className="announcements">
+          <h2>{this.state.announcement}</h2>
+        </section>
         <table>
           <tbody>
             {this.state.gameBoard.map((row, x) => {
